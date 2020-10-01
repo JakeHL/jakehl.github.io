@@ -1,23 +1,21 @@
 import React from 'react';
-import Theme from '../../theme';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import Theme from '../../theme';
 
-type ToolBaritemProps = { text: string; href: string; icon: string };
+type ToolBaritemProps = { text: string; href: string; icon: IconProp };
 
 const ToolBarItemStyled = styled.div`
   display: flex;
 `;
 
-const ToolBaritem = ({ text, href, icon }: ToolBaritemProps) => {
-  return (
-    <ToolBarItemStyled>
-      <FontAwesomeIcon icon={['fas', 'coffee']} />
-      <a href={href}>{text}</a>
-    </ToolBarItemStyled>
-  );
-};
+const ToolBaritem = ({ text, href, icon }: ToolBaritemProps) => (
+  <ToolBarItemStyled>
+    <FontAwesomeIcon icon={icon} />
+    <a href={href}>{text}</a>
+  </ToolBarItemStyled>
+);
 
 const ToolBarOuter = styled.div`
   margin: 20px;
@@ -28,7 +26,7 @@ const ToolBarOuter = styled.div`
   color: ${Theme.Colors.black};
 `;
 
-const ToolBar: React.FC = ({ children }) => (
+const ToolBar: React.FC = ({ children }: { children: React.ReactNode }) => (
   <ToolBarOuter>{children}</ToolBarOuter>
 );
 

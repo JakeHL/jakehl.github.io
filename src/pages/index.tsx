@@ -1,10 +1,11 @@
 import React from 'react';
 
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { styled } from '../theme';
 
 import Layout from '../components/Layout';
 import ToolBar, { ToolBaritem } from '../components/toolbar';
-import Bio from './index/bio';
+import Bio from '../components/Bio';
 
 const FlexColumn = styled.div`
   display: flex;
@@ -32,7 +33,11 @@ export default function Home() {
       <FlexColumn>
         <LinksContainer>
           <ToolBar>
-            <ToolBaritem text="Github" href="#" icon="coffee" />
+            <ToolBaritem
+              text="Github"
+              href="https://github.com/jakehl"
+              icon={faGithub}
+            />
           </ToolBar>
         </LinksContainer>
         <MainContent>

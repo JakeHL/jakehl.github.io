@@ -18,13 +18,10 @@ const RootContainer = styled.div`
   min-height: 100vh;
 `;
 
-const Layout = ({ children }) => {
-  return (
-    <RootContainer>
-      <GlobalStyles />
-      {children}
-    </RootContainer>
-  );
-};
-
+const Layout: React.FC = ({ children }: { children: React.ReactNode }) => (
+  <RootContainer>
+    <GlobalStyles />
+    {children}
+  </RootContainer>
+);
 export default Layout;

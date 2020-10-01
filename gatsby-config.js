@@ -7,9 +7,17 @@
 module.exports = {
   /* Your site config here */
   plugins: [
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'markdown-pages',
+        path: `${__dirname}/src/markdown`,
+      },
+    },
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
     'gatsby-plugin-fontawesome-css',
+    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {

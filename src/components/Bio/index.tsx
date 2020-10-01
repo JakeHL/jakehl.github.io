@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { graphql, StaticQuery } from 'gatsby';
 
 import Theme from '../../theme';
 
@@ -64,28 +65,30 @@ const BioPicture = styled.img`
   margin: ${Theme.Sizes.margin.standard};
 `;
 
-const BioText = () => (
-  <BioCopy>
-    Hi, I'm Jake. A Software Engineer & Graphic designer based in Manchester,
-    UK.
-    <br />
-    Feel free to check out my out my <a href="#">recent work</a> or my{' '}
-    <a href="#">portfolio</a>.
-    <br />
-    If you'd like to hire me you can <a href="#">get in touch</a> or find me on{' '}
-    <a href="#">Upwork</a>.
-  </BioCopy>
-);
+const bioQuery = graphql`
+  query BioQuery {
+    markdownRemark(fileAbsolutePath: { regex: "/bio.md/" }) {
+      html
+    }
+  }
+`;
 
 const Bio = () => (
-  <BioContainer>
-    <div>
-      <BioTitle>Jake Langford</BioTitle>
-      <BioSubheading>Software Engineer & Graphic Designer</BioSubheading>
-      <BioText />
-    </div>
-    <BioPicture src={me} />
-  </BioContainer>
+  <StaticQuery
+    query={bioQuery}
+    render={(data) => (
+      <BioContainer>
+        <div>
+          <BioTitle>Jake Langford</BioTitle>
+          <BioSubheading>Software Engineer & Graphic Designer</BioSubheading>
+          <BioCopy
+            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
+          />
+        </div>
+        <BioPicture src={me} />
+      </BioContainer>
+    )}
+  />
 );
 
 export default Bio;
