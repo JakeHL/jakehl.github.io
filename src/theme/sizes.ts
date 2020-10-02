@@ -7,6 +7,10 @@ const Sizes = {
   margin: {
     article: '20px',
     standard: '20px',
+  }, 
+  padding: {
+    article: '20px',
+    standard: '20px',
   },
 };
 

@@ -18,6 +18,7 @@ const BioContainer = styled.div`
   align-items: center;
 
   color: ${Theme.Colors.white};
+  background-color: ${Theme.Colors.black};
 
   text-align: center;
   @media only screen and (min-width: ${Theme.Breakpoints.lg}) {
@@ -25,6 +26,7 @@ const BioContainer = styled.div`
   }
 
   margin: ${Theme.Sizes.margin.article};
+  padding: ${Theme.Sizes.padding.article};
 `;
 
 const BioTitle = styled.h1`
@@ -62,7 +64,7 @@ const BioPicture = styled.img`
   @media only screen and (min-width: ${Theme.Breakpoints.lg}) {
     max-height: 250px;
   }
-  margin: ${Theme.Sizes.margin.standard};
+  margin-left: ${Theme.Sizes.margin.standard};
 `;
 
 const bioQuery = graphql`
