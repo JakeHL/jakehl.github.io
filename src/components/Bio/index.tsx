@@ -19,6 +19,7 @@ const BioContainer = styled.div`
 
   color: ${Theme.Colors.white};
   background-color: ${Theme.Colors.black};
+  box-shadow: 0px 0px 20px ${Theme.Colors.black};
 
   text-align: center;
   @media only screen and (min-width: ${Theme.Breakpoints.lg}) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import Theme, { styled } from '../../theme';
 
-import Stripes from '../shapes/stripes';
+import Nointies from '../../assets/nointies_bg_bw.svg';
 
 const GlobalStyles = createGlobalStyle`
     body {
@@ -20,9 +20,11 @@ const RootContainer = styled.div`
 `;
 
 const FixedBackground = styled.div`
-    background-color: ${Theme.Colors.black};  
+    background-color: ${Theme.Colors.black};
+    background-image: url(${Nointies});
+    background-size: 100vmin;
     z-index: -1;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -31,9 +33,7 @@ const FixedBackground = styled.div`
 `;
 
 const Layout: React.FC = ({ children }: { children: React.ReactNode }) => (<>
- <FixedBackground>
-      <Stripes />
-  </FixedBackground>
+ <FixedBackground />
   <RootContainer>
     <GlobalStyles />
     {children}
