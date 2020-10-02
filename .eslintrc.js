@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:prettier/recommended',
+    'prettier/react',
     'plugin:react/recommended',
     'airbnb',
   ],
@@ -25,6 +26,7 @@ module.exports = {
       1,
       { extensions: ['.js', '.jsx', '.tsx'] },
     ],
+    'react/require-default-props': 'off',
   },
   settings: {
     'import/resolver': {

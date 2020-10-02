@@ -26,7 +26,7 @@ const ToolBarOuter = styled.div`
   color: ${Theme.Colors.black};
 `;
 
-const ToolBar: React.FC = ({ children }: { children: React.ReactNode }) => (
+const ToolBar = ({ children }: { children: React.ReactNode }) => (
   <ToolBarOuter>{children}</ToolBarOuter>
 );
 

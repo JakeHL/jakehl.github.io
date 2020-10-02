@@ -71,6 +71,10 @@ const BioPicture = styled.img`
 const bioQuery = graphql`
   query BioQuery {
     markdownRemark(fileAbsolutePath: { regex: "/bio.md/" }) {
+      frontmatter {
+        title
+        name
+      }
       html
     }
   }
@@ -79,18 +83,20 @@ const bioQuery = graphql`
 const Bio = () => (
   <StaticQuery
     query={bioQuery}
-    render={(data) => (
-      <BioContainer>
-        <div>
-          <BioTitle>Jake Langford</BioTitle>
-          <BioSubheading>Software Engineer & Graphic Designer</BioSubheading>
-          <BioCopy
-            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-          />
-        </div>
-        <BioPicture src={me} />
-      </BioContainer>
-    )}
+    render={(data) => {
+      const { markdownRemark } = data;
+      const { frontmatter, html } = markdownRemark;
+      return (
+        <BioContainer>
+          <div>
+            <BioTitle>{frontmatter.name}</BioTitle>
+            <BioSubheading>{frontmatter.title}</BioSubheading>
+            <BioCopy dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
+          <BioPicture src={me} />
+        </BioContainer>
+      );
+    }}
   />
 );
 

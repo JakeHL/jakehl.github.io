@@ -22,6 +22,7 @@
     "gatsby": "^2.24.63",
     "gatsby-plugin-fontawesome-css": "^1.0.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-styled-components": "^3.3.11",
     "gatsby-plugin-typescript": "^2.4.20",
     "gatsby-source-filesystem": "^2.3.32",

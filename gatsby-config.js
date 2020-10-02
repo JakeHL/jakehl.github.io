@@ -24,5 +24,13 @@ module.exports = {
         fonts: ['Averia Serif Libre:700', 'Ubuntu:400,700'],
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
+      },
+    },
   ],
 };
