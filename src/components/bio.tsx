@@ -1,13 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 
-import Theme from '../../theme';
+import Theme from '../theme';
 
-import me from '../../assets/me.png';
+import me from '../assets/me.png';
+import BackgroundShapes from './backgroundShapes';
 
 const BioContainer = styled.div`
+  position: relative;
   display: flex;
+  color: ${Theme.Colors.white};
 
   flex-direction: column-reverse;
   @media only screen and (min-width: ${Theme.Breakpoints.lg}) {
@@ -17,16 +20,11 @@ const BioContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  color: ${Theme.Colors.white};
-  background-color: ${Theme.Colors.black};
-  box-shadow: 0px 0px 20px ${Theme.Colors.black};
-
   text-align: center;
   @media only screen and (min-width: ${Theme.Breakpoints.lg}) {
     text-align: right;
   }
 
-  margin: ${Theme.Sizes.margin.article};
   padding: ${Theme.Sizes.padding.article};
 `;
 
@@ -47,7 +45,7 @@ const BioSubheading = styled.p`
   font-size: ${Theme.Sizes.fonts.subheading};
 `;
 
-const BioCopy = styled.p`
+const BioCopy = styled.div`
   color: ${Theme.Colors.mainLight};
   line-height: 22px;
 
@@ -61,9 +59,9 @@ const BioCopy = styled.p`
 `;
 
 const BioPicture = styled.img`
-  max-height: 200px;
+  max-height: 150px;
   @media only screen and (min-width: ${Theme.Breakpoints.lg}) {
-    max-height: 250px;
+    max-height: 200px;
   }
   margin-left: ${Theme.Sizes.margin.standard};
 `;
@@ -80,6 +78,36 @@ const bioQuery = graphql`
   }
 `;
 
+const FillParent = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+`;
+
+const StyledBackground = styled.div`
+  ${FillParent}
+`;
+
+const BackgroundGradient = styled.div`
+  ${FillParent};
+  background: linear-gradient(
+    0deg,
+    ${Theme.Colors.black} 0%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  z-index: 1;
+`;
+
+const Background = () => (
+  <StyledBackground>
+    <BackgroundShapes scaleX={0.2} fill={Theme.Colors.grey} />
+    <BackgroundGradient />
+  </StyledBackground>
+);
+
 const Bio = () => (
   <StaticQuery
     query={bioQuery}
@@ -88,6 +116,7 @@ const Bio = () => (
       const { frontmatter, html } = markdownRemark;
       return (
         <BioContainer>
+          <Background />
           <div>
             <BioTitle>{frontmatter.name}</BioTitle>
             <BioSubheading>{frontmatter.title}</BioSubheading>

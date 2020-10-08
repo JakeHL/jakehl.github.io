@@ -2,9 +2,6 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import Theme, { styled } from '../../theme';
 
-// import Nointies from '../../assets/nointies_pattern.inline.svg';
-import BackgroundShapes from '../backgroundShapes';
-
 const GlobalStyles = createGlobalStyle`
     body {
         margin: 0px;
@@ -22,8 +19,6 @@ const RootContainer = styled.div`
 
 const FixedBackground = styled.div`
   background-color: ${Theme.Colors.black};
-  // background-image: url();
-  background-size: 100vmin;
   z-index: -1;
   position: fixed;
   top: 0;
@@ -35,9 +30,7 @@ const FixedBackground = styled.div`
 
 const Layout = ({ children }: { children: React.ReactNode }) => (
   <>
-    <FixedBackground>
-      <BackgroundShapes scaleX={0.3} />
-    </FixedBackground>
+    <FixedBackground />
     <RootContainer>
       <GlobalStyles />
       {children}

@@ -1,50 +1,46 @@
 import React from 'react';
 
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { styled } from '../theme';
+import styled from 'styled-components';
 
 import Layout from '../components/Layout';
-import ToolBar, { ToolBaritem } from '../components/toolbar';
-import Bio from '../components/Bio';
+import { CardColumn, Card } from '../components/Layout/cards';
+import Bio from '../components/bio';
+import Theme from '../theme';
 
-const FlexColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
+import Moonpig from '../assets/moonpig.png';
+import Rio from '../assets/rio.png';
+import Guinness from '../assets/guinness.png';
 
-const LinksContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+const StyledH2 = styled.h2`
+  color: ${Theme.Colors.white};
+  font-family: ${Theme.Fonts.heading};
+  font-size: ${Theme.Sizes.fonts.h1MD};
+  text-align: center;
+  margin: 0;
 `;
-
-const MainContent = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const FooterContent = styled.div``;
 
 export default function Home() {
   return (
     <Layout>
-      <FlexColumn>
-        <LinksContainer>
-          <ToolBar>
-            <ToolBaritem
-              text="Github"
-              href="https://github.com/jakehl"
-              icon={faGithub}
-            />
-          </ToolBar>
-        </LinksContainer>
-        <MainContent>
-          <Bio />
-        </MainContent>
-        <FooterContent>1</FooterContent>
-      </FlexColumn>
+      <Bio />
+      <StyledH2 id="work">Proffesional Work</StyledH2>
+      <CardColumn>
+        <Card
+          Title="Moonpig"
+          Description="Lorem Ipsum"
+          BackgroundImage={Moonpig}
+        />
+        <Card
+          Title="Ditto AI"
+          Description="Lorem Ipsum"
+          BackgroundImage={Rio}
+        />
+        <Card
+          Title="The Guinness Partnership"
+          Description="Lorem Ipsum"
+          BackgroundImage={Guinness}
+        />
+      </CardColumn>
     </Layout>
   );
 }
