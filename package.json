@@ -29,7 +29,7 @@
     "gatsby-plugin-styled-components": "^3.3.11",
     "gatsby-plugin-typescript": "^2.4.20",
     "gatsby-source-filesystem": "^2.3.32",
-    "gatsby-transformer-remark": "^2.8.37",
+    "gatsby-transformer-remark": "^5.25.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^5.2.0"
